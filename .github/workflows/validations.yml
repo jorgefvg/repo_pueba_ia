@@ -49,4 +49,4 @@ jobs:
         with:
           name: pytest
           path: pytest-report.xml
-          reporter: junit
+          reporter: java-junit
