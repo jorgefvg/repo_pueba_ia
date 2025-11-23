@@ -26,7 +26,7 @@ jobs:
 
   run-tests:
     runs-on: ubuntu-latest
-    needs: pre-commit-check
+    needs: pre-commit-check  # <- No corre pruebas si falla formato
 
     steps:
       - name: Checkout del repositorio
@@ -37,16 +37,11 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Instalar dependencias para pruebas
+      - name: Instalar dependencias
         run: |
-          pip install pytest
+          pip install pytest coverage
 
-      - name: Ejecutar pruebas y generar reporte JUnit
-        run: pytest -v --junitxml=pytest-report.xml
-
-      - name: Publicar resultados de pruebas en GitHub
-        uses: dorny/test-reporter@v1
-        with:
-          name: pytest
-          path: pytest-report.xml
-          reporter: java-junit
+      - name: Ejecutar tests con coverage
+        run: |
+          coverage run -m pytest
+          coverage report
