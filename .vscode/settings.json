@@ -2,8 +2,15 @@
     "editor.codeActionsOnSave": {
         "source.fixAll": "explicit"
     },
+    // Configuración para archivos .py
     "[python]": {
-    "editor.defaultFormatter": "ms-python.black-formatter",
-    "editor.formatOnSave": true
-    }
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnSave": true
+    },
+    // Configuración para Notebooks (.ipynb)
+    "[jupyter]": {
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnSave": true
+    },
+    "notebook.formatOnSave.enabled": true
 }
